@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package visao;
+import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.event.*;
+import java.net.URL;
 
-/**
- *
- * @author puc
- */
 public class Tela_Principal extends javax.swing.JFrame {
 
     /**
@@ -18,7 +18,6 @@ public class Tela_Principal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -35,6 +34,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         JButtom_Executar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTextArea_Saida = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CLINICA DE PESO ClinGYN");
@@ -69,8 +69,18 @@ public class Tela_Principal extends javax.swing.JFrame {
                 JTextField_PesoActionPerformed(evt);
             }
         });
+        JTextField_Peso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextField_PesoKeyTyped(evt);
+            }
+        });
 
         JTextField_Altura.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
+        JTextField_Altura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTextField_AlturaKeyTyped(evt);
+            }
+        });
 
         JComboBox_Sexo.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
         JComboBox_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Opções--", "Masculino", "Feminino" }));
@@ -93,63 +103,78 @@ public class Tela_Principal extends javax.swing.JFrame {
         JTextArea_Saida.setRows(5);
         jScrollPane1.setViewportView(JTextArea_Saida);
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Tarefas POO_resized_resized_resized.jpg"))); // NOI18N
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(184, 184, 184))
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JtextField_NomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JTextField_Peso, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                            .addComponent(JTextField_Altura)))
-                    .addComponent(JButtom_Executar))
-                .addContainerGap(77, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(JTextField_Peso, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(JTextField_Altura)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(JComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JButtom_Executar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(JtextField_NomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 32, Short.MAX_VALUE)))
+                .addGap(110, 110, 110))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(JtextField_NomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(JTextField_Peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(JTextField_Altura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(JComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(JButtom_Executar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                .addGap(29, 29, 29))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(JTextField_Peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(JTextField_Altura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(JComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(127, 127, 127)
+                        .addComponent(JButtom_Executar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(134, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -172,16 +197,43 @@ public class Tela_Principal extends javax.swing.JFrame {
         int peso = 0;
         float altura = 0;
         String sexo = "";
-        
+        float imc = 0;
         nomeCompleto = JtextField_NomeCompleto.getText();
         peso = Integer.parseInt(JTextField_Peso.getText());
         altura = Float.parseFloat(JTextField_Altura.getText());
-        
-        String saida = "CLINICA GYN\n";
-        saida += "DADOS DO PACIENTE\n";
-        
+        sexo = (String) JComboBox_Sexo.getSelectedItem();
+        if(!sexo.equals("--Opções--")){   
+} else {
+            JOptionPane.showMessageDialog(null, "Opção Inválida!", "\nEscolha Outra: ", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        imc = peso/(float) Math.pow((altura/100), 2);
+        String saida = "CLINICA GYN\n"; 
+        saida += "DADOS DO PACIENTE\n";  
         JTextArea_Saida.setText(saida);
+        JTextArea_Saida.append("Nome Completo: " + nomeCompleto);
+        JTextArea_Saida.append("\nPeso: " + peso);
+        JTextArea_Saida.append("\nAltura: " + altura);
+        JTextArea_Saida.append("\nSexo: " + sexo);
+        JTextArea_Saida.append("\nIMC: " + imc);
+        
     }//GEN-LAST:event_JButtom_ExecutarActionPerformed
+
+    private void JTextField_PesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextField_PesoKeyTyped
+     
+                char c = evt.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    evt.consume();  // Ignora o evento de digitação
+                }
+            
+    }//GEN-LAST:event_JTextField_PesoKeyTyped
+
+    private void JTextField_AlturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTextField_AlturaKeyTyped
+       char c = evt.getKeyChar();
+                if (!Character.isDigit(c)) {
+                    evt.consume();  
+                }
+    }//GEN-LAST:event_JTextField_AlturaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -230,6 +282,8 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
 }
