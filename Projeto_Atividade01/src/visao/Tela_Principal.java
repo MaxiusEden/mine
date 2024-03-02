@@ -1,21 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 import javax.swing.JOptionPane;
-import javax.swing.*;
-import java.awt.event.*;
-import java.net.URL;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.DocumentFilter;
 
-public class Tela_Principal extends javax.swing.JFrame {
+
+ public class Tela_Principal extends javax.swing.JFrame {
 
     /**
      * Creates new form Tela_Principal
      */
+     
     public Tela_Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+         
     }
 
     @SuppressWarnings("unchecked")
@@ -83,7 +81,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         });
 
         JComboBox_Sexo.setFont(new java.awt.Font("Liberation Sans", 2, 14)); // NOI18N
-        JComboBox_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Opções--", "Masculino", "Feminino" }));
+        JComboBox_Sexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
         JComboBox_Sexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JComboBox_SexoActionPerformed(evt);
@@ -202,20 +200,16 @@ public class Tela_Principal extends javax.swing.JFrame {
         peso = Integer.parseInt(JTextField_Peso.getText());
         altura = Float.parseFloat(JTextField_Altura.getText());
         sexo = (String) JComboBox_Sexo.getSelectedItem();
-        if(!sexo.equals("--Opções--")){   
-} else {
-            JOptionPane.showMessageDialog(null, "Opção Inválida!", "\nEscolha Outra: ", JOptionPane.INFORMATION_MESSAGE);
+        if(nomeCompleto.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nome Completo faltando", "\nInsira o por favor: ", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+        } 
         imc = peso/(float) Math.pow((altura/100), 2);
         String saida = "CLINICA GYN\n"; 
         saida += "DADOS DO PACIENTE\n";  
-        JTextArea_Saida.setText(saida);
-        JTextArea_Saida.append("Nome Completo: " + nomeCompleto);
-        JTextArea_Saida.append("\nPeso: " + peso);
-        JTextArea_Saida.append("\nAltura: " + altura);
-        JTextArea_Saida.append("\nSexo: " + sexo);
-        JTextArea_Saida.append("\nIMC: " + imc);
+        JTextArea_Saida.setText(saida + "Nome Completo: " + nomeCompleto + "\nPeso: " + peso
+        + "\nAltura: " + altura + "\nSexo: " + sexo + "\nIMC: " + imc);
+        
         
     }//GEN-LAST:event_JButtom_ExecutarActionPerformed
 
@@ -251,22 +245,16 @@ public class Tela_Principal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Tela_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tela_Principal().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Tela_Principal().setVisible(true);
         });
     }
 
@@ -285,5 +273,10 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    void insertString(DocumentFilter.FilterBypass fb, int offset, String newText, AttributeSet attr) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
 }
