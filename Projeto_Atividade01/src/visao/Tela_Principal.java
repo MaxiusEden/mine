@@ -1,8 +1,6 @@
 package visao;
 import javax.swing.JOptionPane;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.DocumentFilter;
-
+import entidades.Paciente;
 
  public class Tela_Principal extends javax.swing.JFrame {
 
@@ -191,24 +189,23 @@ import javax.swing.text.DocumentFilter;
     }//GEN-LAST:event_JComboBox_SexoActionPerformed
 
     private void JButtom_ExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtom_ExecutarActionPerformed
-        String nomeCompleto = "";
-        int peso = 0;
-        float altura = 0;
-        String sexo = "";
-        float imc = 0;
-        nomeCompleto = JtextField_NomeCompleto.getText();
-        peso = Integer.parseInt(JTextField_Peso.getText());
-        altura = Float.parseFloat(JTextField_Altura.getText());
-        sexo = (String) JComboBox_Sexo.getSelectedItem();
-        if(nomeCompleto.trim().isEmpty()) {
+       Paciente p1 = new Paciente();
+       
+       p1.nomeCompleto = JtextField_NomeCompleto.getText();
+       p1.peso = Integer.parseInt(JTextField_Peso.getText());
+       p1.altura = Float.parseFloat(JTextField_Altura.getText());
+       p1.sexo = (String) JComboBox_Sexo.getSelectedItem();
+       
+        
+        if(p1.nomeCompleto.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Nome Completo faltando", "\nInsira o por favor: ", JOptionPane.INFORMATION_MESSAGE);
             return;
         } 
-        imc = peso/(float) Math.pow((altura/100), 2);
+        
         String saida = "CLINICA GYN\n"; 
         saida += "DADOS DO PACIENTE\n";  
-        JTextArea_Saida.setText(saida + "Nome Completo: " + nomeCompleto + "\nPeso: " + peso
-        + "\nAltura: " + altura + "\nSexo: " + sexo + "\nIMC: " + imc);
+        JTextArea_Saida.setText(saida + "Nome Completo: " + p1.nomeCompleto + "\nPeso: " + p1.peso
+        + "\nAltura: " + p1.altura + "\nSexo: " + p1.sexo + "\nIMC: " + p1.calcularIMC());
         
         
     }//GEN-LAST:event_JButtom_ExecutarActionPerformed
@@ -273,10 +270,4 @@ import javax.swing.text.DocumentFilter;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-
-    void insertString(DocumentFilter.FilterBypass fb, int offset, String newText, AttributeSet attr) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-
 }
