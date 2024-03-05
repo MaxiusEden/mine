@@ -1,2 +1,0 @@
-visaoPiramide.telaPrincipalPiramide
-visaoPiramide.telaPrincipalPiramide$1
